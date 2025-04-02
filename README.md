@@ -1,81 +1,58 @@
-How to run?
-STEPS:
-Clone the repository
 
-Project repo: https://github.com/
-STEP 01- Create a conda environment after opening the repository
+Medical Chatbot
+
+Introduction
+
+This repository contains the source code for a Medical Chatbot that leverages Mistral AI and Pinecone for intelligent responses. The chatbot is built using Python, LangChain, Flask, and deployed on AWS using EC2 and ECR.
+
+Tech Stack Used
+
+Python
+
+LangChain
+
+Flask
+
+Mistral AI
+
+Pinecone
+
+AWS (EC2, ECR, GitHub Actions)
+
+
+Installation and Setup
+
+Step 1: Clone the Repository
+
+git clone https://github.com/YOUR_REPO.git
+ cd YOUR_REPO
+
+Step 2: Create a Conda Environment
+
 conda create -n medibot python=3.10 -y
 conda activate medibot
-STEP 02- install the requirements
+
+Step 3: Install Dependencies
+
 pip install -r requirements.txt
-Create a .env file in the root directory and add your Pinecone & openai credentials as follows:
-PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-# run the following command to store embeddings to pinecone
+
+Step 4: Set Up Environment Variables
+
+Create a .env file in the root directory and add your Pinecone and OpenAI credentials:
+
+PINECONE_API_KEY="your_pinecone_api_key"
+OPENAI_API_KEY="your_openai_api_key"
+
+Step 5: Store Embeddings to Pinecone
+
 python store_index.py
-# Finally run the following command
+
+Step 6: Run the Application
+
 python app.py
-Now,
 
-open up localhost:
-Techstack Used:
-Python
-LangChain
-Flask
-GPT
-Pinecone
-AWS-CICD-Deployment-with-Github-Actions
-1. Login to AWS console.
-2. Create IAM user for deployment
-#with specific access
+Step 7: Access the Chatbot
 
-1. EC2 access : It is virtual machine
+Open your browser and navigate to:
 
-2. ECR: Elastic Container registry to save your docker image in aws
-
-
-#Description: About the deployment
-
-1. Build docker image of the source code
-
-2. Push your docker image to ECR
-
-3. Launch Your EC2 
-
-4. Pull Your image from ECR in EC2
-
-5. Lauch your docker image in EC2
-
-#Policy:
-
-1. AmazonEC2ContainerRegistryFullAccess
-
-2. AmazonEC2FullAccess
-3. Create ECR repo to store/save docker image
-- Save the URI: 970547337635.dkr.ecr.ap-south-1.amazonaws.com/medicalchatbot
-4. Create EC2 machine (Ubuntu)
-5. Open EC2 and Install docker in EC2 Machine:
-#optinal
-
-sudo apt-get update -y
-
-sudo apt-get upgrade
-
-#required
-
-curl -fsSL https://get.docker.com -o get-docker.sh
-
-sudo sh get-docker.sh
-
-sudo usermod -aG docker ubuntu
-
-newgrp docker
-6. Configure EC2 as self-hosted runner:
-setting>actions>runner>new self hosted runner> choose os> then run command one by one
-7. Setup github secrets:
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
-AWS_DEFAULT_REGION
-ECR_REPO
-PINECONE_API_KEY
-OPENAI_API_KEY
+http://localhost:8080
